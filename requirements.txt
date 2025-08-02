@@ -1,0 +1,23 @@
+# Telegram Bot Framework - Python 3.13 compatible version
+python-telegram-bot[webhooks,job-queue]==21.4
+
+# Web Framework  
+flask==3.0.0
+jinja2==3.1.2
+
+# HTTP Requests - Compatible with telegram-bot 21.4
+httpx==0.27.0
+requests==2.31.0
+
+# Process Management
+psutil==5.9.8
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2024.1
+
+# Development
+python-dotenv==1.0.0
+
+# Logging
+structlog==23.2.0

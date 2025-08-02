@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: telegram-bot-saas
+    env: python
+    plan: standard
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: MASTER_BOT_TOKEN
+        sync: false  # Set manually in Render dashboard
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: RENDER_DISK_PATH
+        value: /data
+      - key: LOG_LEVEL
+        value: INFO
+      - key: PORT
+        value: 10000
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+    
+    disk:
+      name: saas-storage-disk
+      mountPath: /data
+      sizeGB: 5
+    
+    healthCheckPath: /health
+    autoDeploy: true
+    numInstances: 1
+    region: oregon
+    
+    # Resource limits
+    maxCpuPercent: 80
+    maxMemoryPercent: 80
